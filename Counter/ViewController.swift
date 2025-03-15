@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     private var count: Int = 0
     private var history: String = "История изменений:"
@@ -15,24 +15,22 @@ class ViewController: UIViewController {
     
     private let dateFormatter: DateFormatter = DateFormatter()
     
-    
-    @IBOutlet weak var counterLabel: UILabel!
-    @IBOutlet weak var historyTextView: UITextView!
+    @IBOutlet weak private var counterLabel: UILabel!
+    @IBOutlet weak private var historyTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        dateFormatter.dateFormat = "dd.MM.yy HH:mm:ss"
+        dateFormatter.dateFormat = "[dd.MM.yy HH:mm:ss]"
         historyTextView.isEditable = false
         
     }
 
-    @IBAction func plusButton(_ sender: Any) {
+    @IBAction private func plusButton(_ sender: Any) {
         count += 1
 
         ptintText(stringAboutAction: "значение изменено на +1")
     }
-    @IBAction func minusButton(_ sender: Any) {
+    @IBAction private func minusButton(_ sender: Any) {
         if count == 0 {
 
             ptintText(stringAboutAction: "попытка уменьшить значение счётчика ниже 0")
@@ -43,7 +41,7 @@ class ViewController: UIViewController {
         ptintText(stringAboutAction: "значение изменено на -1")
 
     }
-    @IBAction func resetButton(_ sender: Any) {
+    @IBAction private func resetButton(_ sender: Any) {
         count = 0
 
         ptintText(stringAboutAction: "значение сброшено")
